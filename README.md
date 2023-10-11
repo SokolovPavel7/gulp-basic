@@ -1,3 +1,7 @@
+# Gulp сборка: HTML, SCSS, JS, webpack, babel, webp, сжатие графики, автопрефиксы.
+
+## Базовый пакет для процесса разработки
+
 Команда для установки всех пакетов:
 npm i gulp gulp-sass sass gulp-file-include gulp-clean gulp-server-livereload gulp-sourcemaps gulp-plumber gulp-notify gulp-group-css-media-queries --save-dev
 
@@ -12,6 +16,12 @@ gulp-sourcemaps - Исходные карты для CSS
 gulp-plumber - Фикс ошибок при сборке
 gulp-notify - Нотификации
 gulp-group-css-media-queries - Группировка CSS медиа запросов
+gulp-sass-glob - глобальный импорт scss файлов (импорт сразу нескольких папок или файлов)
+
+## Дополнительные пакеты для продакшена
+gulp-autoprefixer - добавляет необходимые вендорные префиксы CSS для старых браузеров
+gulp-csso - минификация css
+gulp-htmlclean - сжатие HTML-кода
 
 ----------------------------------------------------------------------
 

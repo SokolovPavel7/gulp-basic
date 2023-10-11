@@ -1,6 +1,12 @@
 .header {
-    background-color: rgb(172, 156, 156);
+    background-color: rgb(214, 187, 187);
     padding: 100px 0;
     font-size: 38px;
     text-align: center;
+
+    display: flex;
+
+    @media (max-width: 1200px) {
+        font-size: 26px;
+    }
 }

@@ -1,5 +1,7 @@
-/*Base*/
-
 /*Blocks*/
-@import "./blocks/header";
-@import "./blocks/footer";
+@import './blocks/*.scss';
+
+
+*{
+    box-sizing: border-box;
+}
