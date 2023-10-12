@@ -13,6 +13,15 @@ const babel = require('gulp-babel');
 const imagemin = require('gulp-imagemin');
 const changed = require('gulp-changed');
 
+gulp.task('clean:dev', (done) => {
+    if (fs.existsSync('./build/')) {
+        return gulp
+            .src('./build/', { read: false })
+            .pipe(clean({ force: true }));
+    }
+    done();
+});
+
 const plumberNotify = (title) => {
     return {
         errorHandler: notify.onError({
@@ -25,7 +34,7 @@ const plumberNotify = (title) => {
 
 gulp.task('html:dev', () => {
     return gulp
-        .src(['./src/html/**/*.html', '!./src/html/blocks/*.html'])
+        .src(['./src/html/**/*.html', '!./src/html/blocks/**/*.html'])
         .pipe(changed('./build/', { hasChanged: changed.compareContents }))
         .pipe(plumber(plumberNotify('HTML')))
         .pipe(
@@ -74,11 +83,11 @@ gulp.task('files:dev', () => {
 gulp.task('js:dev', () => {
     return gulp
         .src('./src/js/*.js')
-        .pipe(changed('./build/js'))
+        .pipe(changed('./build/js/'))
         .pipe(plumber(plumberNotify('JS')))
         .pipe(babel())
         .pipe(webpack(require('./../webpack.config.js')))
-        .pipe(gulp.dest('./build/js'));
+        .pipe(gulp.dest('./build/js/'));
 });
 
 gulp.task('server:dev', () => {
@@ -90,18 +99,9 @@ gulp.task('server:dev', () => {
     );
 });
 
-gulp.task('clean:dev', (done) => {
-    if (fs.existsSync('./build/')) {
-        return gulp
-            .src('./build/', { read: false })
-            .pipe(clean({ force: true }));
-    }
-    done();
-});
-
 gulp.task('watch:dev', () => {
     gulp.watch('./src/scss/**/*.scss', gulp.parallel('sass:dev'));
-    gulp.watch('./src/**/*.html', gulp.parallel('html:dev'));
+    gulp.watch('./src/html/**/*.*', gulp.parallel('html:dev'));
     gulp.watch('./src/img/**/*', gulp.parallel('images:dev'));
     gulp.watch('./src/fonts/**/*', gulp.parallel('fonts:dev'));
     gulp.watch('./src/files/**/*', gulp.parallel('files:dev'));

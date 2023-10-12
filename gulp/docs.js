@@ -10,7 +10,7 @@ const sass = require('gulp-sass')(require('sass'));
 const sassGlob = require('gulp-sass-glob');
 const autoprefixer = require('gulp-autoprefixer');
 const csso = require('gulp-csso');
-const webpCss = require('gulp-webp-css')
+const webpCss = require('gulp-webp-css');
 
 const server = require('gulp-server-livereload');
 const clean = require('gulp-clean');
@@ -48,7 +48,7 @@ const plumberNotify = (title) => {
 
 gulp.task('html:docs', () => {
     return gulp
-        .src(['./src/html/**/*.html', '!./src/html/blocks/*.html'])
+        .src(['./src/html/**/*.html', '!./src/html/blocks/**/*.html'])
         .pipe(changed('./docs/'))
         .pipe(plumber(plumberNotify('HTML')))
         .pipe(
@@ -107,11 +107,11 @@ gulp.task('files:docs', () => {
 gulp.task('js:docs', () => {
     return gulp
         .src('./src/js/*.js')
-        .pipe(changed('./docs/js'))
+        .pipe(changed('./docs/js/'))
         .pipe(plumber(plumberNotify('JS')))
         .pipe(babel())
-        .pipe(webpack(require('../webpack.config.js')))
-        .pipe(gulp.dest('./docs/js'));
+        .pipe(webpack(require('./../webpack.config.js')))
+        .pipe(gulp.dest('./docs/js/'));
 });
 
 gulp.task('server:docs', () => {
