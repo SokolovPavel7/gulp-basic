@@ -1,11 +1,14 @@
 .footer {
-    background-color: rgb(60, 46, 46);
-    padding: 100px 0;
-    font-size: 38px;
+	background-color: rgb(62, 62, 62);
+	padding: 50px 0;
+	font-size: 32px;
     color: #fff;
-    text-align: center;
-    
-    @media (max-width: 1200px) {
-        font-size: 26px;
-    }
+
+	h1 {
+		font-size: 32px;
+	}
+
+	@media (max-width: 1200px) {
+		font-size: 26px;
+	}
 }

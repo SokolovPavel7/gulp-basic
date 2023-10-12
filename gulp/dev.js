@@ -26,7 +26,7 @@ const plumberNotify = (title) => {
 gulp.task('html:dev', () => {
     return gulp
         .src(['./src/html/**/*.html', '!./src/html/blocks/*.html'])
-        .pipe(changed('./build/'))
+        .pipe(changed('./build/', { hasChanged: changed.compareContents }))
         .pipe(plumber(plumberNotify('HTML')))
         .pipe(
             fileInclude({
@@ -38,17 +38,15 @@ gulp.task('html:dev', () => {
 });
 
 gulp.task('sass:dev', () => {
-    return (
-        gulp
-            .src('./src/scss/*.scss')
-            .pipe(changed('./build/css/'))
-            .pipe(plumber(plumberNotify('SCSS')))
-            .pipe(sourceMaps.init()) //инициализируем исх. карты
-            .pipe(sassGlob())
-            .pipe(sass()) //превращаем sass в css
-            .pipe(sourceMaps.write()) //записываем исх. карты
-            .pipe(gulp.dest('./build/css/'))
-    );
+    return gulp
+        .src('./src/scss/*.scss')
+        .pipe(changed('./build/css/'))
+        .pipe(plumber(plumberNotify('SCSS')))
+        .pipe(sourceMaps.init()) //инициализируем исх. карты
+        .pipe(sassGlob())
+        .pipe(sass()) //превращаем sass в css
+        .pipe(sourceMaps.write()) //записываем исх. карты
+        .pipe(gulp.dest('./build/css/'));
 });
 
 gulp.task('images:dev', () => {

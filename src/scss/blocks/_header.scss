@@ -1,12 +1,10 @@
 .header {
-    background-color: rgb(214, 187, 187);
-    padding: 100px 0;
-    font-size: 38px;
-    text-align: center;
+	background-color: rgb(195, 220, 231);
+	padding: 50px 0;
 
-    display: flex;
-
-    @media (max-width: 1200px) {
-        font-size: 26px;
-    }
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 }

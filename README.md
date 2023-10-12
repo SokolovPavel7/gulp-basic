@@ -1,31 +1,38 @@
 # Gulp сборка: HTML, SCSS, JS, webpack, babel, webp, сжатие графики, автопрефиксы.
 
+## Сборка собирает два проекта
+
+- в папку build собирается проект для процесса разработки из файла с тасками dev.js
+- в папку docs собирается проект для продакшена из файла с тасками docs.js
+
 ## Базовый пакет для процесса разработки
 
 Команда для установки всех пакетов:
-npm i gulp gulp-sass sass gulp-file-include gulp-clean gulp-server-livereload gulp-sourcemaps gulp-plumber gulp-notify gulp-group-css-media-queries --save-dev
+- npm i gulp gulp-sass sass gulp-file-include gulp-clean gulp-server-livereload gulp-sourcemaps gulp-plumber gulp-notify gulp-group-css-media-queries --save-dev
 
 Описание пакетов:
-gulp - собственно Gulp
-gulp-sass - Сборка SASS / SCSS
-sass - Необходим для сборки SASS / SCSS
-gulp-file-include - Подключение файлов друг в друга. HTML include
-gulp-clean - Удаление файлов
-gulp-server-livereload - Сервер с автообновлением страницы
-gulp-sourcemaps - Исходные карты для CSS
-gulp-plumber - Фикс ошибок при сборке
-gulp-notify - Нотификации
-gulp-group-css-media-queries - Группировка CSS медиа запросов
-gulp-sass-glob - глобальный импорт scss файлов (импорт сразу нескольких папок или файлов)
+- gulp - собственно Gulp
+- gulp-sass - Сборка SASS / SCSS
+- sass - Необходим для сборки SASS / SCSS
+- gulp-file-include - Подключение файлов друг в друга. HTML include
+- gulp-clean - Удаление файлов
+- gulp-server-livereload - Сервер с автообновлением страницы
+- gulp-sourcemaps - Исходные карты для CSS
+- gulp-plumber - Фикс ошибок при сборке
+- gulp-notify - Нотификации
+- gulp-group-css-media-queries - Группировка CSS медиа запросов
+- gulp-sass-glob - глобальный импорт scss файлов (импорт сразу нескольких папок или файлов)
 
 ## Дополнительные пакеты для продакшена
-gulp-autoprefixer - добавляет необходимые вендорные префиксы CSS для старых браузеров
-gulp-csso - минификация css
-gulp-htmlclean - сжатие HTML-кода
+- gulp-autoprefixer - добавляет необходимые вендорные префиксы CSS для старых браузеров
+- gulp-csso - минификация css
+- gulp-htmlclean - сжатие HTML-кода
+- gulp-imagemin@7 - сжатие картинок
+- gulp-webp gulp-webp-html gulp-webp-css - конвертация картинок в формат для браузеров - webp
 
 ----------------------------------------------------------------------
 
-Сборка скриптов. webpack, babel
+Сборка скриптов: webpack, babel
 
 Установка babel:
 npm i gulp-babel @babel/core @babel/preset-env
